@@ -1,0 +1,47 @@
+Rename this file to terraform.tfvars and set the variables 
+
+
+  azure_subscription_id = "9a484f3e-b9a6-44d6-908d-de2cd00e349e"
+  azure_client_id = "9efa893f-23ef-40af-b282-ec7e6208b05b"
+  azure_client_secret = "xx"
+  azure_tenant_id = "xx"
+
+Demo_tag        = "CG_demo"
+vnet_cidr       = "10.99.0.0/16"
+GW_int_priv_IP  = "10.99.1.10"
+GW_ext_priv_IP  = "10.99.0.10"
+External_subnet = "10.99.0.0/24"
+Gateway_subnet  = "10.99.100.0/24"
+Internal_Subnet = "10.99.1.0/24"
+DMZ1_subnet     = "10.99.11.0/24"
+DMZ2_subnet     = "10.99.12.0/24"
+DMZ3_subnet     = "10.99.13.0/24"
+
+vm_username = "demo"
+vm_password = "Singsongsung!"
+GW_user_data = <<-EOF
+                #!/bin/bash
+                clish -c 'set user admin shell /bin/bash' -s
+                config_system -s 'install_security_gw=true&install_ppak=true&gateway_cluster_member=false&install_security_managment=false&ftw_sic_key=vpn12345';shutdown -r now;
+                EOF
+
+/*
+        "#!/bin/bash\nconfig_system -s 'timezone=America/New_York&install_security_gw=true&gateway_daip=false&install_ppak=true&gateway_cluster_member=false&ftw_sic_key=vpn12345&upload_info=true&download_info=true&install_security_managment=false&install_mgmt_primary=true&ntp_primary=ntp.checkpoint.com&ntp_primary_version=4&ntp_secondary=ntp2.checkpoint.com&ntp_secondary_version=4&mgmt_admin_radio=gaia_admin&mgmt_gui_clients_radio=any'\nshutdown -r now\n"
+*/
+Linux_user_data = <<-EOF
+                    #!/bin/bash
+                    until sudo apt-get update && sudo apt-get -y install apache2;do
+                      sleep 1
+                    done
+                    until curl \
+                      --output /var/www/html/CloudGuard.png \
+                      --url https://www.checkpoint.com/wp-content/uploads/cloudguard-hero-image.png ; do
+                       sleep 1
+                    done
+                    sudo chmod a+w /var/www/html/index.html 
+                    echo "<html><head><meta http-equiv=refresh content=2;'http://honeypot.mycloudguard.net/' /> </head><body><center><H1>" > /var/www/html/index.html
+                    echo $HOSTNAME >> /var/www/html/index.html
+                    echo "<BR><BR>Check Point CloudGuard SIaC Demo <BR><BR>Any Cloud, Any App, Unmatched Security<BR><BR>" >> /var/www/html/index.html
+                    echo "<img src=\"/CloudGuard.png\" height=\"25%\">" >> /var/www/html/index.html
+                    EOF
+  
