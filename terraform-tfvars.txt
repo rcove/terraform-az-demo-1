@@ -1,10 +1,10 @@
-Rename this file to terraform.tfvars and set the variables 
+# Rename this file to terraform.tfvars and set the variables 
 
 
-  azure_subscription_id = "xx-xx"
-  azure_client_id = "xx-xx"
-  azure_client_secret = "xx"
-  azure_tenant_id = "xx"
+azure_subscription_id = "xx-xx"
+azure_client_id = "xx-xx"
+azure_client_secret = "xx"
+azure_tenant_id = "xx"
 
 Demo_tag        = "CG_demo"
 vnet_cidr       = "10.99.0.0/16"
