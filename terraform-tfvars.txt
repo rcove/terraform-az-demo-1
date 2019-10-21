@@ -1,8 +1,8 @@
 Rename this file to terraform.tfvars and set the variables 
 
 
-  azure_subscription_id = "9a484f3e-b9a6-44d6-908d-de2cd00e349e"
-  azure_client_id = "9efa893f-23ef-40af-b282-ec7e6208b05b"
+  azure_subscription_id = "xx-xx"
+  azure_client_id = "xx-xx"
   azure_client_secret = "xx"
   azure_tenant_id = "xx"
 
@@ -18,11 +18,11 @@ DMZ2_subnet     = "10.99.12.0/24"
 DMZ3_subnet     = "10.99.13.0/24"
 
 vm_username = "demo"
-vm_password = "Singsongsung!"
+vm_password = "Strong_password!"
 GW_user_data = <<-EOF
                 #!/bin/bash
                 clish -c 'set user admin shell /bin/bash' -s
-                config_system -s 'install_security_gw=true&install_ppak=true&gateway_cluster_member=false&install_security_managment=false&ftw_sic_key=vpn12345';shutdown -r now;
+                config_system -s 'install_security_gw=true&install_ppak=true&gateway_cluster_member=false&install_security_managment=false&ftw_sic_key=apassword';shutdown -r now;
                 EOF
 
 /*
