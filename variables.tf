@@ -3,7 +3,7 @@ variable "project_name" {
   default = "CP-Lab"
 }
 variable "location" {
-    default = "West US"
+    default = "West US 2"
 }
 variable "gateway_int_ip" {
     default = "10.99.1.10"
