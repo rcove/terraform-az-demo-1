@@ -1,12 +1,14 @@
 variable "project_name" {
   description = "Project Name - will prefex all generated resource names"
-  default = "CP-Lab"
+  default     = "CP-Lab"
 }
+
 variable "location" {
-    default = "West US 2"
+  default = "West US 2"
 }
+
 variable "gateway_int_ip" {
-    default = "10.99.1.10"
+  default = "10.99.1.10"
 }
 
 variable "vnet_cidr" {
@@ -64,3 +66,4 @@ variable "GW_user_data" {
 variable "Linux_user_data" {
   description = "Startup script for Gateway"
 }
+
